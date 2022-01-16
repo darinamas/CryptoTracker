@@ -9,9 +9,16 @@ import SwiftUI
 
 @main
 struct CryptoTrackerApp: App {
+    
+    @StateObject private var vm = HomeViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView {
+                HomeView()
+                    .navigationBarHidden(true)
+            }
+            .environmentObject(vm)  //All views and child view has access to vm
         }
     }
 }
